@@ -1,0 +1,38 @@
+{
+  "name": "gfn_frontend_challenge_ariel-oliveira",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/arielgmo/gfn_frontend_challenge_ariel-oliveira.git",
+  "author": "Ariel G M de Oliveira <ariel.oliveira@vistajet.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --open --mode development"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.0",
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "prop-types": "^15.6.2",
+    "react-hot-loader": "^4.3.11",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  },
+  "dependencies": {
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  }
+}
