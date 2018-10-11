@@ -1,6 +1,6 @@
 import data from '../../resources/data/data.json';
 
-const mockData = { ...data };
+const mockData = { ...data.stores };
 
 export default function storeReducer(state = mockData, action) {
   switch (action.type) {
