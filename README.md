@@ -5,6 +5,13 @@
 Ariel G. M de Oliveira
 arielgarabetti@gmail.com
 
+##Instruções para rodar
+1-Clonar o projeto.
+2-Instalar o yarn/node na maquina caso não tenha.
+3-Abrir o terminal do node, acessar o folder da pasta e rodar o comando "yarn install".
+4-Caso você queira abrir o servidor de dev rodar o comando "yarn start" caso você queira buildar o bundle rodar o comando "yarn build".
+5-Caso tenha usado yarn build o bundle e o html devem ter sido gerados na pasta dist do seu projeto.
+
 ##Considerações
 
 -Fiz a aplicação em 3 dias, demorei 2 dias para fazer e 1 dia para configurar
