@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   Row,
   Col,
   Input,
   InputNumber,
 } from 'antd';
+import { connect } from 'react-redux';
 import StoresList from './StoresList';
 import StoresMap from './StoresMap';
 import 'antd/dist/antd.css';
@@ -12,7 +14,22 @@ import './MainContentContainer.css';
 
 const SearchInput = Input.Search;
 
-export default class MainContentContainer extends Component {
+class MainContentContainer extends Component {
+  static propTypes = {
+    storeReducer: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string,
+      city: PropTypes.string,
+      state: PropTypes.string,
+      latitude: PropTypes.number,
+      longitude: PropTypes.number,
+      revenue: PropTypes.number,
+    })),
+  }
+
+  static defaultProps = {
+    storeReducer: [],
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -25,6 +42,9 @@ export default class MainContentContainer extends Component {
     const {
       minimunValue,
     } = this.state;
+    const {
+      storeReducer,
+    } = this.props;
     return (
       <div className="content-container">
         <Row gutter={32}>
@@ -33,7 +53,7 @@ export default class MainContentContainer extends Component {
             <p>Faturamento mínimo esperado</p>
           </Col>
         </Row>
-        <Row gutter={32}>
+        <Row gutter={32} className="content-input-row">
           <Col span={12}>
             <SearchInput
               placeholder="Pesquisa"
@@ -52,9 +72,9 @@ export default class MainContentContainer extends Component {
             />
           </Col>
         </Row>
-        <Row>
+        <Row gutter={32}>
           <Col span={12}>
-            <StoresList />
+            <StoresList stores={storeReducer} />
           </Col>
           <Col span={12}>
             <StoresMap />
@@ -64,3 +84,9 @@ export default class MainContentContainer extends Component {
     );
   }
 }
+
+export default connect(
+  ({ storeReducer }) => ({
+    storeReducer,
+  }),
+)(MainContentContainer);
