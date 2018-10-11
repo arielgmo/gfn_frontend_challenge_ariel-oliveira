@@ -17,6 +17,7 @@ const getColumns = () => [{
 }];
 
 const getData = stores => stores.map((store, index) => ({
+  key: index,
   index,
   name: store.name,
   revenue: store.revenue,

@@ -38,6 +38,38 @@ class MainContentContainer extends Component {
     };
   }
 
+  onChangeSearchValue = (value) => {
+    this.setState(prevState => ({
+      ...prevState,
+      searchValue: value,
+    }));
+  }
+
+  onChangeMinimunValue = (value) => {
+    this.setState(prevState => ({
+      ...prevState,
+      minimunValue: value,
+    }));
+  }
+
+  filterStores = () => {
+    const {
+      searchValue,
+    } = this.state;
+    const {
+      storeReducer,
+    } = this.props;
+    if (searchValue !== '' && searchValue !== null) {
+      return storeReducer.filter((store) => {
+        if (store.name.toLowerCase().includes(searchValue.toLowerCase())) {
+          return true;
+        }
+        return false;
+      });
+    }
+    return storeReducer;
+  }
+
   render() {
     const {
       minimunValue,
@@ -57,7 +89,7 @@ class MainContentContainer extends Component {
           <Col span={12}>
             <SearchInput
               placeholder="Pesquisa"
-              onSearch={value => console.log(value)}
+              onSearch={value => this.onChangeSearchValue(value)}
               style={{ width: '100%' }}
               enterButton
             />
@@ -67,17 +99,17 @@ class MainContentContainer extends Component {
               defaultValue={minimunValue}
               formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
               parser={value => value.replace(/\$\s?|(,*)/g, '')}
-              onChange={value => console.log(value)}
+              onChange={value => this.onChangeMinimunValue(value)}
               style={{ width: '100%' }}
             />
           </Col>
         </Row>
         <Row gutter={32}>
           <Col span={12}>
-            <StoresList stores={storeReducer} />
+            <StoresList stores={this.filterStores(storeReducer)} />
           </Col>
           <Col span={12}>
-            <StoresMap />
+            <StoresMap stores={this.filterStores(storeReducer)} minimunValue={minimunValue} />
           </Col>
         </Row>
       </div>

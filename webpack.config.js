@@ -3,7 +3,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src',
   output: {
     path: __dirname + '/dist',
     publicPath: '/',
@@ -33,6 +33,17 @@ module.exports = {
       {
         test: /\.css$/,
         use: [ 'style-loader', 'css-loader' ]
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
       }
     ]
   },
