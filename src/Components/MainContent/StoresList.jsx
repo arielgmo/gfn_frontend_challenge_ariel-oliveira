@@ -8,12 +8,14 @@ const getColumns = () => [{
   title: 'Loja',
   dataIndex: 'name',
   key: 'name',
-  align: 'left',
+  width: '60%',
+  sorter: (value1, value2) => value1.name.localeCompare(value2.name),
 }, {
   title: 'Faturamento',
   dataIndex: 'revenue',
   key: 'revenue',
-  align: 'right',
+  width: '50%',
+  sorter: (value1, value2) => value1.revenue - value2.revenue,
 }];
 
 const getData = stores => stores.map((store, index) => ({
